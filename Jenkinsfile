@@ -1,16 +1,10 @@
 pipeline {
   agent {
     kubernetes {
-      label 'declarative'
+    //   label 'declarative'
       containerTemplate {
         name 'maven'
         image 'maven:3.3.9-jdk-8-alpine'
-        ttyEnabled true
-        command 'cat'
-      }
-      containerTemplate {
-        name 'node'
-        image 'node:8-jessie'
         ttyEnabled true
         command 'cat'
       }
