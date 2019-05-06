@@ -1,5 +1,5 @@
 pipeline {
-	agent any
+	docker { image 'node:7-alpine' }
 
 	environment {
 		WIN_LINUX  = "brailleblaster-daily-linux.zip"
@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage("first") {
             steps {
-                sh "env"
+                sh "node --version"
             }
         }
     }
