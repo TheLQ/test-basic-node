@@ -1,8 +1,6 @@
 pipeline {
   agent {
     kubernetes {
-      label 'mypod'
-      defaultContainer 'jnlp'
       yaml """
 apiVersion: v1
 kind: Pod
@@ -13,14 +11,8 @@ spec:
   containers:
   - name: maven
     image: maven:alpine
-    command:
-    - cat
-    tty: true
   - name: node
     image: node:8-alpine
-    command:
-    - cat
-    tty: true
 """
 
     }
@@ -44,15 +36,15 @@ spec:
         }
       }
     }
-	stage('Run maven with a different shell') {
-		steps {
-		  container(name: 'maven', shell: '/bin/bash') {
-			sh 'mvn -version'
-		  }
-  		  container(name: 'node', shell: '/bin/bash') {
-			sh 'node --version'
-		  }
-		}
-	  }
+	// stage('Run maven with a different shell') {
+	// 	steps {
+	// 	  container(name: 'maven', shell: '/bin/bash') {
+	// 		sh 'mvn -version'
+	// 	  }
+  	// 	  container(name: 'node', shell: '/bin/bash') {
+	// 		sh 'node --version'
+	// 	  }
+	// 	}
+	//   }
   }
 }
