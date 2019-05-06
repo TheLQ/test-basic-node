@@ -9,7 +9,9 @@ pipeline {
 
     stages {
         stage("first") {
-            sh "env"
+            steps {
+                sh "env"
+            }
         }
     }
 }
