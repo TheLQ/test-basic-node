@@ -1,5 +1,5 @@
 pipeline {
-	docker { image 'node:7-alpine' }
+	agent { docker { image 'node:7-alpine' } }
 
 	environment {
 		WIN_LINUX  = "brailleblaster-daily-linux.zip"
